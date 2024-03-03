@@ -1,6 +1,7 @@
 .idea
 venv
 be/blog/__pycache__/
-be/blog/blog/__pycache__/
+be/blog/*/__pycache__/
+be/blog/*/models/__pycache__/
 */__pycache__
 db.sqlite3
