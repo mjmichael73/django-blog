@@ -11,7 +11,11 @@ class Post:
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-publish']
+        ordering = ['-publish']  # From newest to oldest
+        indexes = [
+            models.Index(fields=['-publish'])
+            # Hyphen before the field name to define the index in descending order (Not supported in MySQL)
+        ]
 
     def __str__(self):
         return self.title
