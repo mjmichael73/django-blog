@@ -4,5 +4,6 @@ be/blog/__pycache__/
 be/blog/*/__pycache__/
 be/blog/*/models/__pycache__/
 be/blog/*/migrations/__pycache__/
+be/blog/*/views/__pycache__/
 */__pycache__
 db.sqlite3
