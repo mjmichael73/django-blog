@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Post:
@@ -9,6 +10,11 @@ class Post:
 
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250)
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADEl,
+        related_name='cms_posts'
+    )
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now())
     created = models.DateTimeField(auto_now_add=True)
