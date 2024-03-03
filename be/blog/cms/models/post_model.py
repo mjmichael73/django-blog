@@ -12,7 +12,7 @@ class Post:
     slug = models.SlugField(max_length=250)
     author = models.ForeignKey(
         User,
-        on_delete=models.CASCADEl,
+        on_delete=models.CASCADE,
         related_name='cms_posts'
     )
     body = models.TextField()
