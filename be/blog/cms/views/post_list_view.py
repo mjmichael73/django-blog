@@ -5,6 +5,7 @@ from django.core.paginator import (
     EmptyPage,
     PageNotAnInteger
 )
+from django.views.generic import ListView
 
 
 def post_list(request):
@@ -24,3 +25,11 @@ def post_list(request):
             'posts': posts
         }
     )
+
+
+class PostListView(ListView):
+    """Alternative post list view"""
+    queryset = Post.published.all()
+    context_object_name = "posts"
+    paginate_by = 3
+    template_name = "cms/post/list.html"
