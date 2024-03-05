@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from cms.models import Post
 from django.core.paginator import (
     Paginator,
@@ -6,10 +6,15 @@ from django.core.paginator import (
     PageNotAnInteger
 )
 from django.views.generic import ListView
+from taggit.models import Tag
 
 
-def post_list(request):
+def post_list(request, tag_slug=None):
     post_list = Post.published.all()
+    tag = None
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        post_list = post_list.filter(tags__in=[tag])
     paginator = Paginator(post_list, 3)
     page_number = request.GET.get('page', 1)
     try:
@@ -22,7 +27,8 @@ def post_list(request):
         request,
         'cms/post/list.html',
         {
-            'posts': posts
+            'posts': posts,
+            'tag': tag,
         }
     )
 
