@@ -12,6 +12,7 @@
     python manage.py createsuperuser
     python manage.py dumpdata --indent=2 --output=blog_data.json
     python -Xutf8 manage.py dumpdata --indent-2 --output=blog_data.json
+    python manage.py loaddata blog_data.json
     
 ### Superuser:
 
