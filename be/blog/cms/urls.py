@@ -4,7 +4,8 @@ from .views import (
     post_detail,
     PostListView,
     post_share,
-    post_comment
+    post_comment,
+    post_search,
 )
 from .feeds import LatestPostsFeed
 
@@ -17,4 +18,5 @@ urlpatterns = [
     path('<int:post_id>/share/', post_share, name='post_share'),
     path('<int:post_id>/comment/', post_comment, name="post_comment"),
     path('feed/', LatestPostsFeed(), name="post_feed"),
+    path('search/', post_search, name="post_search"),
 ]
