@@ -18,7 +18,9 @@ def post_search(request):
         if form.is_valid():
             query = form.cleaned_data['query']
             search_vector = SearchVector('title', 'body')
+            # search_vector = SearchVector('title', 'body', config='spanish')
             search_query = SearchQuery(query)
+            # search_query = SearchQuery(query, config='spanish')
             search_rank = SearchRank(search_vector, search_query)
             results = Post.published.annotate(
                 search=search_vector,
