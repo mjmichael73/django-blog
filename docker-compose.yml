@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  django-blog-db:
+    container_name: django-blog-db
+    platform: linux/amd64
+    image: postgres:15.2-alpine
+    ports:
+      - "54324:5432"
+    restart: always
+    env_file: "./pgsql/local/.env.local"
+    volumes:
+      - django-blog-db-data:/var/lib/postgresql/data
+    networks:
+      - django-blog-net
+
+volumes:
+  django-blog-db-data:
+
+networks:
+  django-blog-net:
+    driver: bridge
