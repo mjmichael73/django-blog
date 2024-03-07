@@ -1,3 +1,30 @@
+## Django Blog
+
+### Features:
+    - Admin panel (default django admin panel)
+    - FullTextSearch on posts using PostgreSQL
+    - RSS
+    - Sitemap
+    - ...
+
+### Requirements:
+
+    - docker and docker compose
+    - python 3.12.2
+    - Django 5.0.2
+
+
+### Get the project up and running on your system:
+
+    Run postgres: docker comopse up --build -d
+    Create virtualenv: python -m virtualenv venv
+    Install dependencies: cd /be/blog -> pip install -r requirements.txt
+    Run DB migration: cd /be/blog -> python manage.py migrate
+    Create superuser: python manage.py createsuperuser
+    Run the server: python manage.py runserver
+    
+    
+
 ### Django commands:
 
     django-admin startproject blog
@@ -26,3 +53,7 @@
     docker compose down --remove-orphans --volumes
     docker compose logs -f django-blog-db
     docker compose ps
+
+
+### TODO:
+    - ?
